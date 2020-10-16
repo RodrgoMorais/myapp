@@ -15,14 +15,16 @@ export default class App extends React.Component {
   handleClick = buttonName => {
     this.setState(calculate(this.state, buttonName));
   };
-ß
+  
   render() {
     return (
-      <div className="component-app">
-        <Display value={(this.state.previous + this.state.operation) || null} />
-        <Display value={this.state.total  || "0"}/>
-        <Panel clickHandler={this.handleClick} />
-      </div>
+      <main>
+        <div className="app">
+          <Display value={(this.state.previous + this.state.operation) || "-"} id="display1"/>
+          <Display value={this.state.total  || "0"}/>
+          <Panel clickHandler={this.handleClick} />
+        </div>
+      </main>
     );
   }
 }
