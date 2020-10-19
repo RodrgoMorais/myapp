@@ -17,6 +17,12 @@ export default class Panel extends React.Component {
     return (
       <div className="panel">
         <div>
+          <Button name="MC" clickHandler={this.handleClick} darkblue/>
+          <Button name="MR" clickHandler={this.handleClick} darkblue/>
+          <Button name="M+" clickHandler={this.handleClick} darkblue/>
+          <Button name="MS" clickHandler={this.handleClick} darkblue />
+        </div>
+        <div>
           <Button name="7" clickHandler={this.handleClick} />
           <Button name="8" clickHandler={this.handleClick} />
           <Button name="9" clickHandler={this.handleClick} />

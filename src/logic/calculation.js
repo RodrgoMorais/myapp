@@ -10,6 +10,88 @@ export default function calculate(obj, buttonName) {
     };
   }
 
+  // Some "MC" pressed
+  if (buttonName.slice(0,2) === "MC") {
+    if (buttonName.slice(2,3) === "1"){
+      return {
+        saved1: obj.saved2,
+        saved2: obj.saved3,
+        saved3: obj.saved4,
+        saved4: null,
+      }
+    }
+    if (buttonName.slice(2,3) === "2"){
+      return {
+        saved2: obj.saved3,
+        saved3: obj.saved4,
+        saved4: null,
+      }
+    }
+    if (buttonName.slice(2,3) === "3"){
+      return {
+        saved3: obj.saved4,
+        saved4: null,
+      }
+    }
+    if (buttonName.slice(2,3) === "4"){
+      return {
+        saved4: null,
+      }
+    }
+    else {
+      return {
+        saved1: null,
+        saved2: null,
+        saved3: null,
+        saved4: null,
+      };
+    }
+  }
+
+  // Some "MR" pressed
+  if (buttonName.slice(0,2) === "MR") {
+    if (buttonName.slice(2,3) === "1"){
+      return {
+        total: obj.saved1,
+      }
+    }
+    if (buttonName.slice(2,3) === "2"){
+      return {
+        total: obj.saved2,
+      }
+    }
+    if (buttonName.slice(2,3) === "3"){
+      return {
+        total: obj.saved3,
+      }
+    }
+    if (buttonName.slice(2,3) === "4"){
+      return {
+        total: obj.saved4,
+      }
+    }
+    else {
+      return {
+        total: obj.saved1,
+      };
+    }
+  }
+
+  if (buttonName === "M+") {
+    return {
+      total: operate(obj.saved1, obj.total, "+"),
+    };
+  }
+
+  if (buttonName === "MS") {
+    return {
+      saved1: obj.total,
+      saved2: obj.saved1,
+      saved3: obj.saved2,
+      saved4: obj.saved3,
+    };
+  }
+
   // Number pressed
   if (isNumber(buttonName)) {
     if (buttonName === "0" && obj.total === "0") {
@@ -39,7 +121,6 @@ export default function calculate(obj, buttonName) {
   // "." pressed
   if (buttonName === ".") {
     if (obj.total) {
-      // ignore a . if the total number already has one
       if (obj.total.includes(".")) {
         return {};
       }
@@ -71,8 +152,6 @@ export default function calculate(obj, buttonName) {
     };
   }
 
-  // No operation yet, but the user typed one
-
   // Number not pressed, just save the operation
   if (!obj.total) {
     return { 
@@ -81,7 +160,6 @@ export default function calculate(obj, buttonName) {
     };
   }
 
-  // Save the operation and shift 'total' into 'previous'
   return {
     previous: obj.total,
     total: null,

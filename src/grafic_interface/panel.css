@@ -1,17 +1,15 @@
 .panel {
-    margin-left: 30%;
-    background-color: white;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    flex: 1 0 auto;
-    width: 40%;
-  }
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  flex: 1 0 auto;
+}
   
-  .panel > div {
-    width: 100%;
-    flex: 1 0 auto;
-    display: flex;
-  }
+.panel > div {
+  width: 100%;
+  flex: 1 0 auto;
+  display: flex;
+}
 
   
